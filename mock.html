@@ -1,23 +1,47 @@
 <html>
 <head>
+    <title>Facebook</title>
     <style> 
+        body {
+            background-image: url(backgrd.png);
+            background-repeat: no-repeat;
+            font-family: Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
+            font-size: 13px;
+line-height: 18px;
+   
+        }
+
+
+
+        a {
+color: #3b5998;
+cursor: pointer;
+text-decoration: none;
+}
+
         #imageContainer {
             position: relative;
         }
 
         #brandTagging {
             position: absolute;
-            left: 0;
-            right: 0;
+            left: 309;
+            top: 17;
             z-index: 1;
+            width: 455px;
+            height: 653px;
         }
 
         .taggingFrame {
-            border: 2px solid white;
+            border: 3px solid rgba(255, 255, 255, .9);
             width: 100px;
             height: 100px;
             position: absolute;
             z-index: 2;
+            -webkit-border-radius: 3px;
+-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .75), 0 0 4px rgba(0, 0, 0, .5) inset;
+position: relative;
+visibility: visible;
         }
 
         .hidden {
@@ -32,6 +56,26 @@
             position: absolute;
         }
 
+        #status {
+            position: absolute;
+            background-color: white;
+            width: 300px;
+            height: 20px;
+            top: 124px;
+            left: 815px;
+        }
+
+        autocomplete-suggestion {
+            background-color: white;
+        }
+
+        .autocomplete-suggestions { border: 1px solid #999; background: #FFF; cursor: default; overflow: auto; -webkit-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); -moz-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; font-weight: bold;}
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: bold; color: #3399FF; }
+
+input { font-size: 12px; padding: 5px; border: 1px solid #CCC; display: block; margin: 10px 0; }
+
 
     </style>
 </head>
@@ -39,15 +83,15 @@
 <image id="brandTagging" src="image.jpg"></image>
 
 <div id="imageContainer">
+    <div id="autoComplete" class="hidden" style="height: 200px;">
+        <input type="text" name="country" id="autocomplete-ajax" style="position: absolute; z-index: 2;" placeholder="Tag"/> 
+        <input type="text" name="url" id="urlInputElem" style="margin-left:135px;position:relative;z-index: 1;width:50%;" placeholder="URL"/> 
+    </div>
 
 
-
-<div class="hidden" id="autoComplete" style="height: 200px;">
-    <input type="text" name="urlInput" id="urlId" style="position: absolute; z-index: 2; background: transparent;"/>
-    <input type="text" name="country" id="autocomplete-ajax" style="position: absolute; z-index: 2; background: transparent;"/>
-    <input type="text" name="country" id="autocomplete-ajax-x" disabled="disabled" style="color: #CCC; position: absolute; background: transparent; z-index: 1;"/>
 </div>
 
+<div id="status">
 </div>
 
 
@@ -63,13 +107,20 @@
     imageToTag.onclick = function(ev) {
         console.log("image is clicked " + ev.offsetX );
         var taggingBox = document.createElement('div');
+        taggingBox.setAttribute('id', "taggingFrameId");
         taggingBox.setAttribute('class', "taggingFrame");
-        taggingBox.setAttribute('style', 'left: ' + (ev.offsetX-50) + ';top: ' + (ev.offsetY-50));
+        taggingBox.setAttribute('style', 'left: ' + (ev.offsetX-50 + 309) + ';top: ' + (ev.offsetY-50+17));
         document.getElementById('imageContainer').appendChild(taggingBox);
         var letsComplete = document.getElementById('autoComplete');
         letsComplete.setAttribute('class', 'show');
-        letsComplete.setAttribute('style', 'left: ' + (ev.offsetX-50) + ';top: ' + (ev.offsetY+50));
+        letsComplete.setAttribute('style', 'left: ' + (ev.offsetX-50 + 309) + ';top: ' + (ev.offsetY+50+17));
     }
+
+
+
+
+
+
 
 
 </script>

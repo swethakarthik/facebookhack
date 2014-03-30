@@ -5,6 +5,43 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
+
+    <style> 
+        #imageContainer {
+            position: relative !important;
+        }
+
+        #brandTagging {
+            position: absolute !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 1 !important;
+        }
+
+        .taggingFrame {
+            border: 2px solid white !important;
+            width: 100px !important;
+            height: 100px !important;
+            position: absolute !important;
+            z-index: 2 !important;
+        }
+
+        .hidden {
+            opacity: 0;
+        }
+
+        .show {
+            opacity: 1; 
+        }
+
+        #autoComplete {
+            position: absolute !important; 
+        }
+
+
+    </style>
+
+
     <script>
         function envFlush(a) {
             function b(c) {
@@ -14344,7 +14381,20 @@
                                 id="fbPhotoSnowliftFullScreenClose" data-ft="{&quot;tn&quot;:&quot;+\u003C&quot;}" role="button"></a>
                             </div>
                             <div class="stage" data-ft="{&quot;tn&quot;:&quot;E&quot;}">
-                                <img class="spotlight" alt="" aria-describedby="fbPhotosSnowliftCaption" aria-busy="false" src="./fbhack1_files/10155898_10152018176522393_899711508_n.jpg" style="width: 424px; height: 609px;">
+                      
+
+                                <image id="brandTagging" src="image.jpg"></image>
+
+
+                                <div id="imageContainer">
+                                    <div class="hidden" id="autoComplete" style="height: 200px;">
+                                        <input type="text" name="urlInput" id="urlId" style="position: absolute; z-index: 2; background: transparent;"/>
+                                        <input type="text" name="country" id="autocomplete-ajax" style="position: absolute; z-index: 2; background: transparent;"/>
+                                        <input type="text" name="country" id="autocomplete-ajax-x" disabled="disabled" style="color: #CCC; position: absolute; background: transparent; z-index: 1;"/>
+                                    </div>
+                                </div>
+
+
                                 <div class="fbPhotosPhotoTagboxes tagContainer" id="fbPhotoSnowliftTagBoxes">
                                     <div class="tagsWrapper" style="width: 424px; height: 609px;">
                                         <div class="fbPhotosPhotoTagboxBase faceBox" style="width: 14.37125748503%;height: 10%;left: 41.317365269461%;top: 11.083333333333%;" data-recognizeduids="[]" id="face:10152018176567393">
@@ -14361,6 +14411,9 @@
                                         </div>
                                     </div>
                                 </div>
+
+
+
                                 <div class="fbPhotoTagApproval hidden_elem" id="fbPhotoSnowliftTagApproval"></div>
                                 <div class="_5bai" id="fbPhotoSnowliftComputerVisionInfo"></div>
                             </div>
@@ -14829,5 +14882,28 @@
     </div>
     <textarea class="textMetrics" style="font-family: Helvetica, Arial, &#39;lucida grande&#39;, tahoma, verdana, arial, sans-serif; font-size: 12px; font-style: normal; font-weight: normal; line-height: 15.359999656677246px; word-wrap: break-word; width: 233px;">Write a comment......</textarea>
 </body>
+
+
+    <script type="text/javascript" src="jQuery-Autocomplete/scripts/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="jQuery-Autocomplete/scripts/jquery.mockjax.js"></script>
+    <script type="text/javascript" src="jQuery-Autocomplete/src/jquery.autocomplete.js"></script>
+    <script type="text/javascript" src="jQuery-Autocomplete/scripts/countries.js"></script>
+    <script type="text/javascript" src="jQuery-Autocomplete/scripts/demo.js"></script>
+
+
+<script type="text/javascript">
+    var imageToTag = document.getElementById("brandTagging");
+    imageToTag.onclick = function(ev) {
+        console.log("image is clicked " + ev.offsetX );
+        var taggingBox = document.createElement('div');
+        taggingBox.setAttribute('class', "taggingFrame");
+        taggingBox.setAttribute('style', 'left: ' + (ev.offsetX-50) + ';top: ' + (ev.offsetY-50));
+        document.getElementById('imageContainer').appendChild(taggingBox);
+        var letsComplete = document.getElementById('autoComplete');
+        letsComplete.setAttribute('class', 'show');
+        letsComplete.setAttribute('style', 'left: ' + (ev.offsetX-50) + ';top: ' + (ev.offsetY+50));
+    }
+
+</script>
 
 </html>

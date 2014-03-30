@@ -1,0 +1,6 @@
+/*!CK:4039094764!*//*1392699482,178191663*/
+
+if (self.CavalryLogger) { CavalryLogger.start_js(["DlO28"]); }
+
+__d("CouponComposerConstants",[],function(a,b,c,d,e,f){var g={DESCRIPTION_LENGTH:90,HEADLINE_LENGTH:25,TERMS_LENGTH:1500};e.exports=g;});
+__d("AfroCardFollowup",["AsyncRequest","DOM","Event","WebAfro","csx"],function(a,b,c,d,e,f,g,h,i,j,k){function l(m){"use strict";this.$AfroCardFollowup0=m;this.$AfroCardFollowup1=h.find(m,"._5xsl");i.listen(this.$AfroCardFollowup1,'click',this.$AfroCardFollowup2.bind(this));var n=h.scry(this.$AfroCardFollowup0,"._5xyg")[0];if(n)i.listen(n,'click',this.$AfroCardFollowup3.bind(this));}l.prototype.$AfroCardFollowup2=function(){"use strict";var m=this.$AfroCardFollowup1.getAttribute('data-context'),n=h.scry(this.$AfroCardFollowup0,'^.fbTimelineUnit')>0;if(!m||n){j.closeAfro(this.$AfroCardFollowup0,this.$AfroCardFollowup1);return;}var o=j.findStoryElement(this.$AfroCardFollowup1),p={context:m,action:"close"},q=new g().setURI('/ajax/feed/filter_action/afro_client_log').setMethod('POST').setRelativeTo(o).setData(p);q.send();j.closeAfro(this.$AfroCardFollowup0,this.$AfroCardFollowup1);};l.prototype.$AfroCardFollowup3=function(){"use strict";this.$AfroCardFollowup1.setAttribute('data-context','');};e.exports=l;});
